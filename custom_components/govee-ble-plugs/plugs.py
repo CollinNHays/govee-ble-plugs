@@ -49,8 +49,8 @@ class GoveePairApi(T.Protocol):
 
 
 def get_api_by_model(model: str, device: BLEDevice, token: str) -> GoveePlugApi:
-    if model == "H5080":
-        return GoveePlugH5080(device, token)
+    if model == "H5086":
+        return GoveePlugH5086(device, token)
 
     if model == "H5082":
         return GoveePlugH5082(device, token)
@@ -59,12 +59,12 @@ def get_api_by_model(model: str, device: BLEDevice, token: str) -> GoveePlugApi:
 
 
 def get_pair_by_model(model: str, device: BLEDevice) -> GoveePairApi:
-    if model == "H5080":
+    if model == "H5086":
         return GoveePlugPairer(
             device,
-            GoveePlugH5080.RECV_CHARACTERISTIC_UUID,
-            GoveePlugH5080.SEND_CHARACTERISTIC_UUID,
-            GoveePlugH5080.MSG_GET_AUTH_KEY,
+            GoveePlugH5086.RECV_CHARACTERISTIC_UUID,
+            GoveePlugH5086.SEND_CHARACTERISTIC_UUID,
+            GoveePlugH5086.MSG_GET_AUTH_KEY,
         )
 
     if model == "H5082":
@@ -93,9 +93,9 @@ def parse_advertisement_data(
     if not local_name:
         return
 
-    if local_name.startswith("ihoment_H5080_"):
+    if local_name.startswith("ihoment_H5086_"):
         return GoveeAdvertisementData(
-            local_name, device.address, device, GoveePlugH5080.MODEL
+            local_name, device.address, device, GoveePlugH5086.MODEL
         )
 
     if local_name.startswith("ihoment_H5082_"):
@@ -224,8 +224,8 @@ class GoveePlugH508x:
                 await client.disconnect()
 
 
-class GoveePlugH5080(GoveePlugH508x):
-    MODEL = "H5080"
+class GoveePlugH5086(GoveePlugH508x):
+    MODEL = "H5086"
 
     MSG_GET_AUTH_KEY = _b("aab100000000000000000000000000000000001b")
     MSG_TURN_ON = _b("3301ff00000000000000000000000000000000cd")
@@ -317,7 +317,7 @@ class GoveePlugH5082(GoveePlugH508x):
 
 
 class GoveePlugPairer:
-    # At least H5080, H5082, and H5086 all have the same pairing procedure
+    # At least H5086, H5082, and H5086 all have the same pairing procedure
     # as implemented here
 
     def __init__(

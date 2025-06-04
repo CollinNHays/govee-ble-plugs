@@ -32,7 +32,7 @@ class GoveePlugEntity(
         self._address = self.coordinator.ble_device.address
         self._port = port or 0
 
-        # backwards compat -- original H5080 entity
+        # backwards compat -- original H5086 entity
         if port is None:
             self._attr_unique_id = self._address
         else:

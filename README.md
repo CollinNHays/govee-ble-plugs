@@ -10,7 +10,7 @@ Control your Govee Smart Plugs via BLE directly from HomeAssistant!
 
 Supported devices:
 
-* H5080 Smart Plug
+* H5086 Smart Plug
 * H5082 Dual Smart Plug
 
 ## Configuration
@@ -65,7 +65,7 @@ If you're facing issues with the integration, consider the following steps:
 Credit
 ------
 
-H5080 support would not have been possible without the scripts from https://github.com/egold555/Govee-Reverse-Engineering (and if you want to add support for more devices then this is a good place to start!).
+H5086 support would not have been possible without the scripts from https://github.com/egold555/Govee-Reverse-Engineering (and if you want to add support for more devices then this is a good place to start!).
 
 This integration was inspired by https://github.com/Beshelmek/govee_ble_lights/ and I started writing this based on its code, but I eventually just copied a bunch of code from the [keymitt_ble integration](https://github.com/home-assistant/core/tree/dev/homeassistant/components/keymitt_ble) since it was much closer to what actually needed to be accomplished.
 
